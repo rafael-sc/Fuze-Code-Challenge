@@ -4,4 +4,8 @@ import com.orafaelsc.fuzecodechallenge.commom.BaseViewModel
 import com.orafaelsc.fuzecodechallenge.commom.CoroutineDispatcherProvider
 
 class MainViewModel(coroutineDispatcherProvider: CoroutineDispatcherProvider) :
-    BaseViewModel(coroutineDispatcherProvider)
+    BaseViewModel(coroutineDispatcherProvider) {
+    fun init() {
+        TODO("Not yet implemented")
+    }
+}
