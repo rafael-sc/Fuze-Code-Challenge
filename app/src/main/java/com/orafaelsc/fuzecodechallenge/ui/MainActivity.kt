@@ -18,6 +18,11 @@ class MainActivity : AppCompatActivity() {
         loadKoinModules(MainModule.module)
         setContentView(R.layout.activity_main)
         verifyConnection()
+        initObserver()
+    }
+
+    private fun initObserver() {
+
     }
 
     private fun verifyConnection() {
