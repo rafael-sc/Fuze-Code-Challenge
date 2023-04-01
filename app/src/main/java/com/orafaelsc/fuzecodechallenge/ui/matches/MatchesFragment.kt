@@ -28,4 +28,8 @@ class MatchesFragment : Fragment() {
 
     private fun setupView() {
     }
+
+    companion object {
+        fun newInstance() = MatchesFragment()
+    }
 }
