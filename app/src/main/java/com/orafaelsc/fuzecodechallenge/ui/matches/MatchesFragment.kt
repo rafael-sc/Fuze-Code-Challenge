@@ -6,10 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.orafaelsc.fuzecodechallenge.databinding.FragmentMatchesBinding
+import com.orafaelsc.fuzecodechallenge.di.MatchesModule
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.context.GlobalContext.loadKoinModules
 
 class MatchesFragment : Fragment() {
 
     private var binding: FragmentMatchesBinding? = null
+    private val viewModel: MatchesViewModel by viewModel()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -19,6 +23,7 @@ class MatchesFragment : Fragment() {
         .apply {
             binding = this
         }.also {
+            loadKoinModules(MatchesModule.module)
             setupView()
             initDataObserver()
         }.root
