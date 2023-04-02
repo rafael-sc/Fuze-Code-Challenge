@@ -2,7 +2,7 @@ package com.orafaelsc.fuzecodechallenge.data
 
 import com.orafaelsc.fuzecodechallenge.commom.ResourceProvider
 import com.orafaelsc.fuzecodechallenge.commom.exceptions.ApiException
-import com.orafaelsc.fuzecodechallenge.data.api.MatchesApi
+import com.orafaelsc.fuzecodechallenge.data.network.MatchesApi
 import com.orafaelsc.fuzecodechallenge.domain.repository.MatchesRepository
 
 class MatchesRepositoryImpl(
