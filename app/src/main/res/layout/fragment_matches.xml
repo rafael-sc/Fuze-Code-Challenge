@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,7 +8,43 @@
     tools:context=".ui.MainActivity">
 
     <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="24dp"
+        android:lineHeight="40dp"
+        android:text="@string/matches"
+        android:textColor="@color/white"
+        android:textFontWeight="500"
+        android:textSize="32sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="matches fragment" />
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle"
+        tools:itemCount="10"
+        tools:listitem="@layout/match_item" />
+
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/progressBar"
+        style="@android:style/Widget.ProgressBar.Small"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:indeterminateBehavior="repeat"
+        android:layout_centerInParent="true"
+        android:indeterminate="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

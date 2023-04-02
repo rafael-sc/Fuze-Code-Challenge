@@ -6,7 +6,6 @@ data class Match(
     val id: Int,
     val firstTeam: Team,
     val secondTeam: Team,
-    val isLive: Boolean,
     val startTime: LocalDateTime,
     val description: String,
     val starTimeText: String,

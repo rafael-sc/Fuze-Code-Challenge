@@ -4,9 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.orafaelsc.fuzecodechallenge.commom.extensions.setupObserverOnCreated
 import com.orafaelsc.fuzecodechallenge.databinding.FragmentMatchesBinding
 import com.orafaelsc.fuzecodechallenge.di.MatchesModule
+import com.orafaelsc.fuzecodechallenge.ui.matches.adapter.MatchesAdapter
+import com.orafaelsc.fuzecodechallenge.ui.matches.model.Match
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.GlobalContext.loadKoinModules
 
@@ -14,10 +21,19 @@ class MatchesFragment : Fragment() {
 
     private var binding: FragmentMatchesBinding? = null
     private val viewModel: MatchesViewModel by viewModel()
+    private val forecastAdapter: MatchesAdapter by lazy {
+        MatchesAdapter {
+            context?.run {
+//                viewModel.onListItemClick()
+                Toast.makeText(this, "item $it clicked", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?,
+        savedInstanceState: Bundle?
     ): View = FragmentMatchesBinding
         .inflate(inflater, container, false)
         .apply {
@@ -25,14 +41,31 @@ class MatchesFragment : Fragment() {
         }.also {
             loadKoinModules(MatchesModule.module)
             viewModel.init()
-            setupView()
             initDataObserver()
         }.root
 
     private fun initDataObserver() {
+        with(viewModel) {
+            setupObserverOnCreated(matches() to ::matchesObserver)
+            setupObserverOnCreated(loadingState() to ::loadingStateObserver)
+        }
     }
 
-    private fun setupView() {
+    private fun matchesObserver(matches: List<Match>) {
+        binding?.run {
+            forecastAdapter.setItems(matches)
+            recyclerViewList.run {
+                layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+                adapter = forecastAdapter
+            }
+        }
+    }
+
+    private fun loadingStateObserver(isLoading: Boolean) {
+        binding?.run {
+            recyclerViewList.isVisible = isLoading.not()
+            progressBar.isVisible = isLoading
+        }
     }
 
     companion object {

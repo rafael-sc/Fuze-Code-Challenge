@@ -9,7 +9,7 @@ import com.orafaelsc.fuzecodechallenge.ui.matches.model.Match
 
 class MatchesRepositoryImpl(
     private val matchesAPI: MatchesApi,
-    private val resourceProvider: ResourceProvider,
+    private val resourceProvider: ResourceProvider
 ) : MatchesRepository {
     override suspend fun getMatches(): List<Match> {
         val result = matchesAPI.getMatches()
@@ -20,7 +20,7 @@ class MatchesRepositoryImpl(
                     resultList.add(it.toDomain(resourceProvider))
                 }
             }
-            return resultList.sortedWith(compareBy({ it.isLive }, { it.startTime }))
+            return resultList.sortedBy { it.startTime }
         } else {
             throw ApiException.UnableToGetMatchesException()
         }
