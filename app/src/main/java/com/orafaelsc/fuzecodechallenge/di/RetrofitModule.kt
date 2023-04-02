@@ -1,6 +1,6 @@
 package com.orafaelsc.fuzecodechallenge.di
 
-import com.orafaelsc.fuzecodechallenge.data.api.ApiCallInterceptor
+import com.orafaelsc.fuzecodechallenge.data.network.ApiCallInterceptor
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

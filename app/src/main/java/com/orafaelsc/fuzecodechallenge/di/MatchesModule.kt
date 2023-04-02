@@ -1,7 +1,7 @@
 package com.orafaelsc.fuzecodechallenge.di
 
 import com.orafaelsc.fuzecodechallenge.data.MatchesRepositoryImpl
-import com.orafaelsc.fuzecodechallenge.data.api.MatchesApi
+import com.orafaelsc.fuzecodechallenge.data.network.MatchesApi
 import com.orafaelsc.fuzecodechallenge.domain.repository.MatchesRepository
 import com.orafaelsc.fuzecodechallenge.domain.usecase.MatchesUseCase
 import com.orafaelsc.fuzecodechallenge.domain.usecase.MatchesUseCaseImpl

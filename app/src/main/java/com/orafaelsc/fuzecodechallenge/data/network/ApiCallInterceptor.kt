@@ -1,4 +1,4 @@
-package com.orafaelsc.fuzecodechallenge.data.api
+package com.orafaelsc.fuzecodechallenge.data.network
 
 import okhttp3.Interceptor
 import okhttp3.Response
