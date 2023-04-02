@@ -7,4 +7,8 @@
     <string name="today">Today</string>
     <string name="now">Now</string>
     <string name="to_be_defined">To be defined</string>
+    <string name="vs">vs</string>
+    <string name="content_league_icon">League icon</string>
+    <string name="content_first_team_logo">First team logo</string>
+    <string name="content_second_team_logo">Second team logo</string>
 </resources>

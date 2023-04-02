@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/holder"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_rounded">
+
+    <ImageView
+        android:id="@+id/imageViewFirstTeamLogo"
+        android:layout_width="60dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/img_fuze_logo"
+        android:contentDescription="@string/content_first_team_logo"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@id/textViewVersus"
+        app:layout_constraintEnd_toStartOf="@id/textViewVersus"
+        app:layout_constraintTop_toTopOf="@id/textViewVersus" />
+
+    <TextView
+        android:id="@+id/textViewFirstTeamName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/imageViewFirstTeamLogo"
+        app:layout_constraintStart_toStartOf="@id/imageViewFirstTeamLogo"
+        app:layout_constraintTop_toBottomOf="@id/imageViewFirstTeamLogo"
+        tools:text="Team1" />
+
+    <TextView
+        android:id="@+id/textViewVersus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/vs"
+        android:textAlignment="center"
+        android:textColor="@color/white_50"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/imageViewSecondTeamLogo"
+        android:layout_width="60dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/img_fuze_logo"
+        android:contentDescription="@string/content_second_team_logo"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@id/textViewVersus"
+        app:layout_constraintStart_toEndOf="@id/textViewVersus"
+        app:layout_constraintTop_toTopOf="@id/textViewVersus" />
+
+    <TextView
+        android:id="@+id/textViewSecondTeamName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textAlignment="center"
+
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/imageViewSecondTeamLogo"
+        app:layout_constraintStart_toStartOf="@id/imageViewSecondTeamLogo"
+        app:layout_constraintTop_toBottomOf="@id/imageViewSecondTeamLogo"
+        tools:text="Team1" />
+
+    <View
+        android:id="@+id/viewDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewFirstTeamName" />
+
+    <ImageView
+        android:id="@+id/imageViewLeagueLogo"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="8dp"
+        android:background="@color/black"
+        android:contentDescription="@string/content_league_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewDivider" />
+
+    <TextView
+        android:id="@+id/textViewLeagueName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewLeagueLogo"
+        app:layout_constraintStart_toEndOf="@id/imageViewLeagueLogo"
+        app:layout_constraintTop_toTopOf="@id/imageViewLeagueLogo"
+        tools:text="league name" />
+</androidx.constraintlayout.widget.ConstraintLayout>
