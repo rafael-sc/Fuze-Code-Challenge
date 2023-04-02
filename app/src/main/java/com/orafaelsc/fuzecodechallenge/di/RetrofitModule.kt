@@ -1,6 +1,5 @@
 package com.orafaelsc.fuzecodechallenge.di
 
-import com.orafaelsc.fuzecodechallenge.BuildConfig
 import com.orafaelsc.fuzecodechallenge.data.api.ApiCallInterceptor
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -14,7 +13,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
 object RetrofitModule {
-    private const val BASE_API_URL = "https://api.pandascore.co/videogames"
+    private const val BASE_API_URL = "https://api.pandascore.co/"
 
     val instance: Module = module {
         single(RetrofitQualifier) {
@@ -24,7 +23,9 @@ object RetrofitModule {
         }
 
         val httpLoggingInterceptor = HttpLoggingInterceptor().setLevel(
-            if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE,
+//            if (BuildConfig.DEBUG)
+            HttpLoggingInterceptor.Level.BODY,
+//            else HttpLoggingInterceptor.Level.NONE,
         )
 
         single(OkHttpClientBuilderQualifier) {

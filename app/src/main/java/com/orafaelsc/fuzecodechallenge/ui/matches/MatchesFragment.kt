@@ -24,6 +24,7 @@ class MatchesFragment : Fragment() {
             binding = this
         }.also {
             loadKoinModules(MatchesModule.module)
+            viewModel.init()
             setupView()
             initDataObserver()
         }.root

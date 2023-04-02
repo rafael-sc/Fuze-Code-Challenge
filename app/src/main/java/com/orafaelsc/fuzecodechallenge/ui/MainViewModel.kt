@@ -16,7 +16,7 @@ class MainViewModel(coroutineDispatcherProvider: CoroutineDispatcherProvider) :
 
     fun init() {
         viewModelScope.launch(mainExceptionHandler) {
-            delay(2500)
+//            delay(2500)
             navigateToMatchesFragment.emit(true)
         }
     }
