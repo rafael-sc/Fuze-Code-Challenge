@@ -16,9 +16,11 @@ class MatchesRepositoryImpl(
         if (result.isSuccessful) {
             val resultList = mutableListOf<Match>()
             result.body()?.map {
-                resultList.add(it.toDomain(resourceProvider))
+                if (it.endAt == null) {
+                    resultList.add(it.toDomain(resourceProvider))
+                }
             }
-            return resultList.sortedBy { it.startTime }
+            return resultList.sortedWith(compareBy({ it.isLive }, { it.startTime }))
         } else {
             throw ApiException.UnableToGetMatchesException()
         }

@@ -20,16 +20,16 @@ fun MatchResponseItem.toDomain(resourceProvider: ResourceProvider) = Match(
     } else {
         isLive(
             status,
-            beginAt,
+            beginAt
         )
     },
     startTime = beginAt?.toLocalDate() ?: LocalDateTime.MAX,
     description = resourceProvider.getString(
         R.string.description,
         league.name.orEmpty(),
-        serie.name.orEmpty(),
+        serie.name.orEmpty()
     ),
-    starTimeText = getStartTime(resourceProvider, beginAt),
+    starTimeText = getStartTime(resourceProvider, beginAt)
 )
 
 private fun isLive(status: String?, beginAt: String?) = when {
@@ -45,29 +45,29 @@ private fun isLive(status: String?, beginAt: String?) = when {
 
 private fun getTeam(
     resourceProvider: ResourceProvider,
-    opponentResponseItem: OpponentResponseItem?,
+    opponentResponseItem: OpponentResponseItem?
 ): Team {
     return if (opponentResponseItem == null) {
         Team(
             name = resourceProvider.getString(R.string.to_be_defined),
-            "",
+            ""
         )
     } else {
         Team(
             name = opponentResponseItem.opponent.name
                 ?: resourceProvider.getString(R.string.to_be_defined),
-            iconUrl = opponentResponseItem.opponent.imageUrl.orEmpty(),
+            iconUrl = opponentResponseItem.opponent.imageUrl.orEmpty()
         )
     }
 }
 
 private fun getStartTime(resourceProvider: ResourceProvider, beginAt: String?): String {
-    beginAt?.toLocalDate()?.run {
-        if (LocalDateTime.now().isAfter(this)) {
-            return resourceProvider.getString(R.string.today)
-        } else {
-            return DateTimeFormatter.ofPattern("EEE HH:mm").format(this)
+    return beginAt?.toLocalDate()?.run {
+        val now = LocalDateTime.now()
+        when {
+            now.isAfter(this) -> resourceProvider.getString(R.string.now)
+            now.isBefore(this) && this.isBefore(LocalDateTime.now().plusDays(1)) -> resourceProvider.getString(R.string.today)
+            else -> DateTimeFormatter.ofPattern("EEE HH:mm").format(this)
         }
-    }
-    return ""
+    } ?: ""
 }

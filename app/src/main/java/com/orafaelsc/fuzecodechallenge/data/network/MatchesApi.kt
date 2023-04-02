@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface MatchesApi {
 
-    @GET("matches?pageSize=10")
+    @GET("matches??filter\\[finished\\]=false")
     suspend fun getMatches(): Response<List<MatchResponseItem>>
 }
