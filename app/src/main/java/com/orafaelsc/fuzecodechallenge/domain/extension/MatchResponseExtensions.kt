@@ -29,7 +29,8 @@ fun MatchResponseItem.toDomain(resourceProvider: ResourceProvider) = Match(
         league.name.orEmpty(),
         serie.name.orEmpty()
     ),
-    starTimeText = getStartTime(resourceProvider, beginAt)
+    starTimeText = getStartTime(resourceProvider, beginAt),
+    leagueLogo = league.imageUrl.orEmpty()
 )
 
 private fun isLive(status: String?, beginAt: String?) = when {
@@ -66,7 +67,9 @@ private fun getStartTime(resourceProvider: ResourceProvider, beginAt: String?): 
         val now = LocalDateTime.now()
         when {
             now.isAfter(this) -> resourceProvider.getString(R.string.now)
-            now.isBefore(this) && this.isBefore(LocalDateTime.now().plusDays(1)) -> resourceProvider.getString(R.string.today)
+            now.isBefore(this) && this.isBefore(
+                LocalDateTime.now().plusDays(1)
+            ) -> resourceProvider.getString(R.string.today)
             else -> DateTimeFormatter.ofPattern("EEE HH:mm").format(this)
         }
     } ?: ""
