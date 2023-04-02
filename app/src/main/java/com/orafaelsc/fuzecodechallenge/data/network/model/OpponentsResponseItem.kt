@@ -5,11 +5,14 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class OpponentResponseItem(
-    @Json(name = "acronym") val acronym: String?,
-    @Json(name = "id") val id: Int?,
-    @Json(name = "image_url") val imageUrl: String?,
-    @Json(name = "location") val location: String?,
-    @Json(name = "modified_at") val modifiedAt: String?,
-    @Json(name = "name") val name: String?,
-    @Json(name = "slug") val slug: String?,
-)
+    @field:Json(name = "opponent") val opponent: OpponentItem,
+    @field:Json(name = "type") val type: String,
+) {
+    @JsonClass(generateAdapter = true)
+    data class OpponentItem(
+        @field:Json(name = "id") val id: Int,
+        @field:Json(name = "image_url") val imageUrl: String?,
+        @field:Json(name = "location") val location: String?,
+        @field:Json(name = "name") val name: String?,
+    )
+}

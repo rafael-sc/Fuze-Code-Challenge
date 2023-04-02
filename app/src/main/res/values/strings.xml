@@ -3,4 +3,7 @@
     <string name="content_faze_logo">Faze logo</string>
     <string name="no_internet_connection_available">There\'s no internet connection available.</string>
     <string name="general_retry">Retry</string>
+    <string name="description">%1$s - %2$s</string>
+    <string name="today">Today</string>
+    <string name="to_be_defined">To be defined</string>
 </resources>
