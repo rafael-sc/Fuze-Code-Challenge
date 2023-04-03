@@ -13,7 +13,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
 object RetrofitModule {
-    private const val BASE_API_URL = "https://api.pandascore.co/csgo/"
+    private const val BASE_API_URL = "https://api.pandascore.co/"
 
     val instance: Module = module {
         single(RetrofitQualifier) {

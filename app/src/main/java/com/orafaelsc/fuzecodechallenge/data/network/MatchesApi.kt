@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface MatchesApi {
 
-    @GET("matches??filter\\[finished\\]=false")
+    @GET("csgo/matches??filter\\[finished\\]=false")
     suspend fun getMatches(): Response<List<MatchResponseItem>>
 }
