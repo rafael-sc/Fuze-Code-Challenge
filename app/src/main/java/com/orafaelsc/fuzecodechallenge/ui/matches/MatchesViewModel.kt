@@ -15,11 +15,13 @@ class MatchesViewModel(
 ) :
     BaseViewModel(coroutineDispatcherProvider) {
 
+    private val loadedMatches = mutableListOf<Match>()
+
     private val loadingState = MutableSharedFlow<Boolean>()
     fun loadingState(): SharedFlow<Boolean> = loadingState
 
-    private val navigateToDetailsFragment = MutableSharedFlow<Boolean>()
-    fun navigateToDetailsFragment(): SharedFlow<Boolean> = navigateToDetailsFragment
+    private val navigateToDetailsFragment = MutableSharedFlow<Int>()
+    fun navigateToDetailsFragment(): SharedFlow<Int> = navigateToDetailsFragment
 
     private val matches = MutableSharedFlow<List<Match>>()
     fun matches(): SharedFlow<List<Match>> = matches
@@ -27,8 +29,17 @@ class MatchesViewModel(
     fun init() {
         viewModelScope.launch(mainExceptionHandler) {
             loadingState.emit(true)
-            matches.emit(matchesUseCase.getMatches())
+            val result = matchesUseCase.getMatches()
+            loadedMatches.clear()
+            loadedMatches.addAll(result)
+            matches.emit(result)
             loadingState.emit(false)
+        }
+    }
+
+    fun onAdapterItemClick(position: Int) {
+        viewModelScope.launch(mainExceptionHandler) {
+            navigateToDetailsFragment.emit(loadedMatches[position].id)
         }
     }
 }

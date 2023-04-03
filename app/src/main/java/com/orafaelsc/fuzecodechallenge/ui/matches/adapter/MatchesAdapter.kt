@@ -49,6 +49,7 @@ class MatchesAdapter(
                     load(item.firstTeam.iconUrl) {
                         crossfade(true)
                         placeholder(R.drawable.img_team_placeholder)
+                        fallback(R.drawable.img_team_placeholder)
                         transformations(CircleCropTransformation())
                     }
                     contentDescription =
@@ -60,8 +61,11 @@ class MatchesAdapter(
                     load(item.secondTeam.iconUrl) {
                         crossfade(true)
                         placeholder(R.drawable.img_team_placeholder)
+                        fallback(R.drawable.img_team_placeholder)
                         transformations(CircleCropTransformation())
+                        background = null
                     }
+
                     contentDescription =
                         resources.getString(R.string.content_team_logo, item.secondTeam.name)
                 }
@@ -72,6 +76,7 @@ class MatchesAdapter(
                         load(item.leagueLogo) {
                             placeholder(R.drawable.img_team_placeholder)
                         }
+                        background = null
                     } else {
                         isGone = true
                     }

@@ -30,14 +30,16 @@ private fun getTeam(
 ): Team {
     return if (opponentResponseItem == null) {
         Team(
+            id = 0,
             name = resourceProvider.getString(R.string.to_be_defined),
-            ""
+            iconUrl = null
         )
     } else {
         Team(
+            id = opponentResponseItem.opponent.id,
             name = opponentResponseItem.opponent.name
                 ?: resourceProvider.getString(R.string.to_be_defined),
-            iconUrl = opponentResponseItem.opponent.imageUrl.orEmpty()
+            iconUrl = opponentResponseItem.opponent.imageUrl
         )
     }
 }

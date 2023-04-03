@@ -24,8 +24,7 @@ class MatchesFragment : Fragment() {
     private val forecastAdapter: MatchesAdapter by lazy {
         MatchesAdapter {
             context?.run {
-//                viewModel.onListItemClick()
-                Toast.makeText(this, "item $it clicked", Toast.LENGTH_SHORT).show()
+                viewModel.onAdapterItemClick(it)
             }
         }
     }
@@ -48,7 +47,14 @@ class MatchesFragment : Fragment() {
         with(viewModel) {
             setupObserverOnCreated(matches() to ::matchesObserver)
             setupObserverOnCreated(loadingState() to ::loadingStateObserver)
+            setupObserverOnCreated(
+                navigateToDetailsFragment() to ::navigateToDetailsFragmentObserver
+            )
         }
+    }
+
+    private fun navigateToDetailsFragmentObserver(matchId: Int) {
+        // todo
     }
 
     private fun matchesObserver(matches: List<Match>) {
