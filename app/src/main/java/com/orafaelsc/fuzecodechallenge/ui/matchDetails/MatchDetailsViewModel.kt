@@ -1,4 +1,4 @@
-package com.orafaelsc.fuzecodechallenge.ui.matches
+package com.orafaelsc.fuzecodechallenge.ui.matchDetails
 
 import androidx.lifecycle.viewModelScope
 import com.orafaelsc.fuzecodechallenge.commom.BaseViewModel
@@ -9,35 +9,25 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
 
-class MatchesViewModel(
+class MatchDetailsViewModel(
     private val matchesUseCase: MatchesUseCase,
     coroutineDispatcherProvider: CoroutineDispatcherProvider
-) :
-    BaseViewModel(coroutineDispatcherProvider) {
+) : BaseViewModel(coroutineDispatcherProvider) {
 
     private val loadedMatches = mutableListOf<Match>()
-
     private val loadingState = MutableSharedFlow<Boolean>()
     fun loadingState(): SharedFlow<Boolean> = loadingState
-
-    private val navigateToDetailsFragment = MutableSharedFlow<String>()
-    fun navigateToDetailsFragment(): SharedFlow<String> = navigateToDetailsFragment
-
     private val matches = MutableSharedFlow<List<Match>>()
     fun matches(): SharedFlow<List<Match>> = matches
 
     fun init() {
         viewModelScope.launch(mainExceptionHandler) {
             loadingState.emit(true)
-            if (loadedMatches.isEmpty()) loadedMatches.addAll(matchesUseCase.getMatches())
-            matches.emit(loadedMatches)
+            val result = matchesUseCase.getMatches()
+            loadedMatches.clear()
+            loadedMatches.addAll(result)
+            matches.emit(result)
             loadingState.emit(false)
-        }
-    }
-
-    fun onAdapterItemClick(position: Int) {
-        viewModelScope.launch(mainExceptionHandler) {
-            navigateToDetailsFragment.emit(loadedMatches[position].id.toString())
         }
     }
 }

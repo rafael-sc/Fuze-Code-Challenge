@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.orafaelsc.fuzecodechallenge.commom.extensions.setupObserverOnCreated
@@ -39,7 +39,9 @@ class MatchesFragment : Fragment() {
             binding = this
         }.also {
             loadKoinModules(MatchesModule.module)
-            viewModel.init()
+            if (savedInstanceState == null) {
+                viewModel.init()
+            }
             initDataObserver()
         }.root
 
@@ -53,8 +55,12 @@ class MatchesFragment : Fragment() {
         }
     }
 
-    private fun navigateToDetailsFragmentObserver(matchId: Int) {
-        // todo
+    private fun navigateToDetailsFragmentObserver(matchId: String) {
+        findNavController().navigate(
+            MatchesFragmentDirections.actionMatchesFragmentToMatchDetailsFragment(
+                matchId
+            )
+        )
     }
 
     private fun matchesObserver(matches: List<Match>) {
@@ -72,9 +78,5 @@ class MatchesFragment : Fragment() {
             recyclerViewList.isVisible = isLoading.not()
             progressBar.isVisible = isLoading
         }
-    }
-
-    companion object {
-        fun newInstance() = MatchesFragment()
     }
 }

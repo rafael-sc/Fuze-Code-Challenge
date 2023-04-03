@@ -8,7 +8,6 @@ import com.orafaelsc.fuzecodechallenge.commom.extensions.isConnected
 import com.orafaelsc.fuzecodechallenge.commom.extensions.setupObserverOnCreated
 import com.orafaelsc.fuzecodechallenge.databinding.ActivityMainBinding
 import com.orafaelsc.fuzecodechallenge.di.MainModule
-import com.orafaelsc.fuzecodechallenge.ui.matches.MatchesFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.GlobalContext.loadKoinModules
 
@@ -34,11 +33,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun navigateToMatchesFragment(navigate: Boolean) {
-        if (navigate) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MatchesFragment.newInstance())
-                .commitNow()
-        }
+//        if (navigate) {
+//            supportFragmentManager.beginTransaction()
+//                .replace(R.id.container, MatchesFragment.newInstance())
+//                .commitNow()
+//        }
     }
 
     private fun verifyConnection() {
@@ -53,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         Snackbar.make(
             findViewById(android.R.id.content),
             R.string.no_internet_connection_available,
-            Snackbar.LENGTH_INDEFINITE,
+            Snackbar.LENGTH_INDEFINITE
         ).setAction(R.string.general_retry) {
             if (isConnected()) {
                 viewModel.init()

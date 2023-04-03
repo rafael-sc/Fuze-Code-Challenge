@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_splash"
+    app:startDestination="@+id/matchesFragment">
+
+    <fragment
+        android:id="@+id/matchesFragment"
+        android:name="com.orafaelsc.fuzecodechallenge.ui.matches.MatchesFragment"
+        android:label="@string/matches"
+        tools:layout="@layout/fragment_matches">
+        <action
+            android:id="@+id/action_matchesFragment_to_matchDetailsFragment"
+            app:destination="@id/matchDetailsFragment"
+            app:popUpTo="@+id/matchesFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/matchDetailsFragment"
+        android:name="com.orafaelsc.fuzecodechallenge.ui.matchDetails.MatchDetailsFragment"
+        android:label="matches details"
+        tools:layout="@layout/fragment_match_details">
+        <argument
+            android:name="argMatchId"
+            android:defaultValue="true"
+            app:argType="string" />
+    </fragment>
+</navigation>
