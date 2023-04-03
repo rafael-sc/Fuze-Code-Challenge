@@ -50,8 +50,7 @@ object MatchesModule {
         }
         factory<TeamRepository> {
             TeamRepositoryImpl(
-                teamApi = get(),
-                resourceProvider = get()
+                teamApi = get()
             )
         }
         factory<MatchesApi> {
