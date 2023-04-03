@@ -6,18 +6,113 @@
     android:layout_height="match_parent"
     android:background="@color/gray_background_dark">
 
+    <ImageView
+        android:id="@+id/imageViewFirstTeamLogo"
+        android:layout_width="60dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="20dp"
+        android:contentDescription="@string/content_team_logo"
+        android:scaleType="centerInside"
+        android:src="@drawable/img_team_placeholder"
+        app:layout_constraintBottom_toBottomOf="@id/textViewVersus"
+        app:layout_constraintEnd_toStartOf="@id/textViewVersus"
+        app:layout_constraintTop_toTopOf="@id/textViewVersus" />
+
+    <TextView
+        android:id="@+id/textViewFirstTeamName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/imageViewFirstTeamLogo"
+        app:layout_constraintStart_toStartOf="@id/imageViewFirstTeamLogo"
+        app:layout_constraintTop_toBottomOf="@id/imageViewFirstTeamLogo"
+        tools:text="Team1" />
+
+    <TextView
+        android:id="@+id/textViewVersus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/vs"
+        android:textAlignment="center"
+        android:textColor="@color/white_50"
+        app:layout_constraintBottom_toTopOf="@id/textViewMatchTime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/imageViewSecondTeamLogo"
+        android:layout_width="60dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="20dp"
+        android:contentDescription="@string/content_team_logo"
+        android:scaleType="centerInside"
+        android:src="@drawable/img_team_placeholder"
+        app:layout_constraintBottom_toBottomOf="@id/textViewVersus"
+        app:layout_constraintStart_toEndOf="@id/textViewVersus"
+        app:layout_constraintTop_toTopOf="@id/textViewVersus" />
+
+    <TextView
+        android:id="@+id/textViewSecondTeamName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textAlignment="center"
+
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/imageViewSecondTeamLogo"
+        app:layout_constraintStart_toStartOf="@id/imageViewSecondTeamLogo"
+        app:layout_constraintTop_toBottomOf="@id/imageViewSecondTeamLogo"
+        tools:text="Team1" />
+
+    <TextView
+        android:id="@+id/textViewMatchTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewFirstTeamName"
+        tools:text="hoje 16:50" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewFirstTeamPlayers"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@id/textViewVersus"
+        app:layout_constraintTop_toBottomOf="@id/textViewMatchTime"
+        tools:itemCount="5"
+        tools:listitem="@layout/player_item_left" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewSecondTeamPlayers"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintStart_toEndOf="@id/textViewVersus"
+        app:layout_constraintTop_toBottomOf="@id/textViewMatchTime"
+        tools:itemCount="5"
+        tools:listitem="@layout/player_item_right" />
 
     <androidx.core.widget.ContentLoadingProgressBar
         android:id="@+id/progressBar"
         style="@android:style/Widget.ProgressBar.Small"
         android:layout_width="44dp"
         android:layout_height="44dp"
-        android:indeterminateBehavior="repeat"
         android:layout_centerInParent="true"
         android:indeterminate="true"
+        android:indeterminateBehavior="repeat"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-         />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

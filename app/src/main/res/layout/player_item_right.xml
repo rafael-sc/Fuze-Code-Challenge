@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/holder"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp">
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:background="@drawable/shape_left_rounded"
+        app:layout_constraintBottom_toBottomOf="@id/imageViewPhoto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/imageViewPhoto" />
+
+    <TextView
+        android:id="@+id/textViewNickName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:textColor="@color/white"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintBottom_toBottomOf="@id/imageViewPhoto"
+        app:layout_constraintStart_toEndOf="@id/imageViewPhoto"
+        app:layout_constraintTop_toTopOf="@id/imageViewPhoto"
+        tools:text="NickName" />
+
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white_50"
+        app:layout_constraintEnd_toEndOf="@id/textViewNickName"
+        app:layout_constraintStart_toStartOf="@id/textViewNickName"
+        app:layout_constraintTop_toBottomOf="@id/textViewNickName"
+        tools:text="Name" />
+
+    <ImageView
+        android:id="@+id/imageViewPhoto"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="14dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="@color/white_50" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
