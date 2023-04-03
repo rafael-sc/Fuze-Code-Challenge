@@ -23,8 +23,8 @@
         android:label="matches details"
         tools:layout="@layout/fragment_match_details">
         <argument
-            android:name="argMatchId"
-            android:defaultValue="true"
-            app:argType="string" />
+            android:name="argMatchDetail"
+            app:argType="com.orafaelsc.fuzecodechallenge.ui.matches.model.Match"
+            app:nullable="false" />
     </fragment>
 </navigation>

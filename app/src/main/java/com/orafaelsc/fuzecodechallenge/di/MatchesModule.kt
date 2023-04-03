@@ -5,6 +5,7 @@ import com.orafaelsc.fuzecodechallenge.data.network.MatchesApi
 import com.orafaelsc.fuzecodechallenge.domain.repository.MatchesRepository
 import com.orafaelsc.fuzecodechallenge.domain.usecase.MatchesUseCase
 import com.orafaelsc.fuzecodechallenge.domain.usecase.MatchesUseCaseImpl
+import com.orafaelsc.fuzecodechallenge.ui.matchDetails.MatchDetailsViewModel
 import com.orafaelsc.fuzecodechallenge.ui.matches.MatchesViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
@@ -17,24 +18,29 @@ object MatchesModule {
         viewModel {
             MatchesViewModel(
                 matchesUseCase = get(),
-                coroutineDispatcherProvider = get(),
+                coroutineDispatcherProvider = get()
             )
         }
-
+        viewModel {
+            MatchDetailsViewModel(
+//                matchesUseCase = get(),
+                coroutineDispatcherProvider = get()
+            )
+        }
         factory<MatchesUseCase> {
             MatchesUseCaseImpl(
-                matchesRepository = get(),
+                matchesRepository = get()
             )
         }
         factory<MatchesRepository> {
             MatchesRepositoryImpl(
                 matchesAPI = get(),
-                resourceProvider = get(),
+                resourceProvider = get()
             )
         }
         factory<MatchesApi> {
             provideMatchesApi(
-                get(qualifier = RetrofitQualifier),
+                get(qualifier = RetrofitQualifier)
             )
         }
     }

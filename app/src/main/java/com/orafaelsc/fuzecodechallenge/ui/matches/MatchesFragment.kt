@@ -55,11 +55,9 @@ class MatchesFragment : Fragment() {
         }
     }
 
-    private fun navigateToDetailsFragmentObserver(matchId: String) {
+    private fun navigateToDetailsFragmentObserver(match: Match) {
         findNavController().navigate(
-            MatchesFragmentDirections.actionMatchesFragmentToMatchDetailsFragment(
-                matchId
-            )
+            MatchesFragmentDirections.actionMatchesFragmentToMatchDetailsFragment(match)
         )
     }
 

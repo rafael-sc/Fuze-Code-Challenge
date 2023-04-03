@@ -20,8 +20,8 @@ class MatchesViewModel(
     private val loadingState = MutableSharedFlow<Boolean>()
     fun loadingState(): SharedFlow<Boolean> = loadingState
 
-    private val navigateToDetailsFragment = MutableSharedFlow<String>()
-    fun navigateToDetailsFragment(): SharedFlow<String> = navigateToDetailsFragment
+    private val navigateToDetailsFragment = MutableSharedFlow<Match>()
+    fun navigateToDetailsFragment(): SharedFlow<Match> = navigateToDetailsFragment
 
     private val matches = MutableSharedFlow<List<Match>>()
     fun matches(): SharedFlow<List<Match>> = matches
@@ -37,7 +37,7 @@ class MatchesViewModel(
 
     fun onAdapterItemClick(position: Int) {
         viewModelScope.launch(mainExceptionHandler) {
-            navigateToDetailsFragment.emit(loadedMatches[position].id.toString())
+            navigateToDetailsFragment.emit(loadedMatches[position])
         }
     }
 }

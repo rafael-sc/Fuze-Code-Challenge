@@ -10,4 +10,10 @@ class MatchesUseCaseImpl(
     override suspend fun getMatches(): List<Match> {
         return matchesRepository.getMatches()
     }
+
+    override suspend fun getMatch(matchId: String): Any {
+        return matchesRepository.getMatch(matchId)
+    }
+
+
 }
