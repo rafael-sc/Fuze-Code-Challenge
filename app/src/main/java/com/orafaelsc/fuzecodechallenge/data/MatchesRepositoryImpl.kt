@@ -25,8 +25,4 @@ class MatchesRepositoryImpl(
             throw ApiException.UnableToGetMatchesException()
         }
     }
-
-    override suspend fun getMatch(matchId: String): Any {
-        return matchesAPI.getMatch(matchId)
-    }
 }

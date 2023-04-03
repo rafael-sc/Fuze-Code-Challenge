@@ -3,13 +3,14 @@ package com.orafaelsc.fuzecodechallenge.ui.matchDetails
 import androidx.lifecycle.viewModelScope
 import com.orafaelsc.fuzecodechallenge.commom.BaseViewModel
 import com.orafaelsc.fuzecodechallenge.commom.CoroutineDispatcherProvider
+import com.orafaelsc.fuzecodechallenge.domain.usecase.TeamUseCase
 import com.orafaelsc.fuzecodechallenge.ui.matches.model.Match
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
 
 class MatchDetailsViewModel(
-//    private val teamUseCase: TeamUseCase,
+    private val teamUseCase: TeamUseCase,
     coroutineDispatcherProvider: CoroutineDispatcherProvider
 ) : BaseViewModel(coroutineDispatcherProvider) {
 
