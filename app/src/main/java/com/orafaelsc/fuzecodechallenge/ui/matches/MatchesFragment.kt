@@ -45,8 +45,15 @@ class MatchesFragment : Fragment() {
             if (savedInstanceState == null) {
                 viewModel.init()
             }
+            initViews()
             initDataObserver()
         }.root
+
+    private fun initViews() {
+        binding?.swipeRefreshLayout?.setOnRefreshListener {
+            viewModel.init()
+        }
+    }
 
     private fun initDataObserver() {
         with(viewModel) {
@@ -62,7 +69,7 @@ class MatchesFragment : Fragment() {
     private fun errorStateObserver(exception: Throwable) {
         val message = if (exception is ApiException.UnableToGetMatchesException) {
             resources.getString(R.string.unable_to_get_matches)
-        }else{
+        } else {
             resources.getString(R.string.generic_error_message)
         }
         Snackbar.make(
@@ -87,6 +94,7 @@ class MatchesFragment : Fragment() {
                 layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
                 adapter = matchesAdapter
             }
+            swipeRefreshLayout.isRefreshing = false
         }
     }
 
