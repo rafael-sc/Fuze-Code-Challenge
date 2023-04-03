@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.orafaelsc.fuzecodechallenge.R
 import com.orafaelsc.fuzecodechallenge.commom.extensions.isConnected
-import com.orafaelsc.fuzecodechallenge.commom.extensions.setupObserverOnCreated
 import com.orafaelsc.fuzecodechallenge.databinding.ActivityMainBinding
 import com.orafaelsc.fuzecodechallenge.di.MainModule
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -21,23 +20,10 @@ class MainActivity : AppCompatActivity() {
         loadKoinModules(MainModule.module)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        verifyConnection()
         if (savedInstanceState == null) {
-            initObserver()
             viewModel.init()
         }
-    }
-
-    private fun initObserver() {
-        setupObserverOnCreated(viewModel.navigateToMatchesFragment() to ::navigateToMatchesFragment)
-    }
-
-    private fun navigateToMatchesFragment(navigate: Boolean) {
-//        if (navigate) {
-//            supportFragmentManager.beginTransaction()
-//                .replace(R.id.container, MatchesFragment.newInstance())
-//                .commitNow()
-//        }
     }
 
     private fun verifyConnection() {
