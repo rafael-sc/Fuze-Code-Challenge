@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Fuze Code Challenge</string>
+    <string name="content_faze_logo">Faze logo</string>
+    <string name="no_internet_connection_available">Não existe conexão de internet disponível.</string>
+    <string name="general_retry">Tente Novamente</string>
+    <string name="description">%1$s %2$s</string>
+    <string name="today">Hoje, %1$s</string>
+    <string name="now">Agora</string>
+    <string name="to_be_defined">A ser definido</string>
+    <string name="vs">vs</string>
+    <string name="content_league_icon">Ícone da liga</string>
+    <string name="content_team_logo">%1$s logo</string>
+    <string name="content_player_image">%1$s foto</string>
+    <string name="matches">Partidas</string>
+</resources>
