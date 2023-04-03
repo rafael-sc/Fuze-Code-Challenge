@@ -6,6 +6,29 @@
     android:layout_height="match_parent"
     android:background="@color/gray_background_dark">
 
+
+    <ImageView
+        android:id="@+id/imageViewBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/ic_arrow_left"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        tools:text="LEAGUE + SERIE"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/imageViewBack"
+        app:layout_constraintStart_toEndOf="@id/imageViewBack"
+        app:layout_constraintTop_toTopOf="@id/imageViewBack" />
+
     <ImageView
         android:id="@+id/imageViewFirstTeamLogo"
         android:layout_width="60dp"
@@ -40,7 +63,7 @@
         app:layout_constraintBottom_toTopOf="@id/textViewMatchTime"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
 
 
     <ImageView
@@ -113,6 +136,7 @@
         android:indeterminateBehavior="repeat"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

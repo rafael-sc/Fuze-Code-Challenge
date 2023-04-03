@@ -21,7 +21,7 @@ class MatchesFragment : Fragment() {
 
     private var binding: FragmentMatchesBinding? = null
     private val viewModel: MatchesViewModel by viewModel()
-    private val forecastAdapter: MatchesAdapter by lazy {
+    private val matchesAdapter: MatchesAdapter by lazy {
         MatchesAdapter {
             context?.run {
                 viewModel.onAdapterItemClick(it)
@@ -63,10 +63,10 @@ class MatchesFragment : Fragment() {
 
     private fun matchesObserver(matches: List<Match>) {
         binding?.run {
-            forecastAdapter.setItems(matches)
+            matchesAdapter.setItems(matches)
             recyclerViewList.run {
                 layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-                adapter = forecastAdapter
+                adapter = matchesAdapter
             }
         }
     }

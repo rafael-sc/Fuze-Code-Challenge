@@ -18,6 +18,9 @@ class MatchDetailsViewModel(
     private val loadingState = MutableSharedFlow<Boolean>()
     fun loadingState(): SharedFlow<Boolean> = loadingState
 
+    private val matchDetails = MutableSharedFlow<Match>()
+    fun matchDetails(): SharedFlow<Match> = matchDetails
+
     private val firstTeamPlayers = MutableSharedFlow<List<Player>>()
     fun firstTeamPlayers(): SharedFlow<List<Player>> = firstTeamPlayers
 
@@ -27,6 +30,7 @@ class MatchDetailsViewModel(
     fun init(match: Match) {
         viewModelScope.launch(mainExceptionHandler) {
             loadingState.emit(true)
+            matchDetails.emit(match)
             firstTeamPlayers.emit(teamUseCase.getTeam(match.firstTeam.id.toString()))
             secondTeamPlayers.emit(teamUseCase.getTeam(match.secondTeam.id.toString()))
             loadingState.emit(false)

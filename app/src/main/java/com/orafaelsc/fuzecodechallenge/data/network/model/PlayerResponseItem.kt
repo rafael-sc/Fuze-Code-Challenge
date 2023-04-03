@@ -7,5 +7,6 @@ import com.squareup.moshi.JsonClass
 data class PlayerResponseItem(
     @field:Json(name = "id") val id: Int,
     @field:Json(name = "slug") val slug: String?,
+    @field:Json(name = "name") val name: String?,
     @field:Json(name = "image_url") val imageUrl: String?
 )

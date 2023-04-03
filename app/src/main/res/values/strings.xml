@@ -10,5 +10,6 @@
     <string name="vs">vs</string>
     <string name="content_league_icon">League icon</string>
     <string name="content_team_logo">%1$s logo</string>
+    <string name="content_player_image">%1$s photo</string>
     <string name="matches">Matches</string>
 </resources>

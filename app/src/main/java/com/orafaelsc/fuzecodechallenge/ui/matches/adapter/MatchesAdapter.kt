@@ -7,7 +7,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import coil.transform.CircleCropTransformation
 import com.orafaelsc.fuzecodechallenge.R
 import com.orafaelsc.fuzecodechallenge.commom.AdapterItemClickListener
 import com.orafaelsc.fuzecodechallenge.databinding.MatchItemBinding
@@ -19,7 +18,7 @@ class MatchesAdapter(
     private var items = listOf<Match>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
-        WeatherViewHolder(
+        MatchViewHolder(
             MatchItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -30,12 +29,12 @@ class MatchesAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = items[position]
-        (holder as? WeatherViewHolder)?.onBind(item, position)
+        (holder as? MatchViewHolder)?.onBind(item, position)
     }
 
     override fun getItemCount(): Int = items.size
 
-    class WeatherViewHolder(
+    class MatchViewHolder(
         private val binding: MatchItemBinding,
         private val itemClickListener: AdapterItemClickListener
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -50,7 +49,6 @@ class MatchesAdapter(
                         crossfade(true)
                         placeholder(R.drawable.img_team_placeholder)
                         fallback(R.drawable.img_team_placeholder)
-                        transformations(CircleCropTransformation())
                     }
                     contentDescription =
                         resources.getString(R.string.content_team_logo, item.firstTeam.name)
@@ -62,7 +60,6 @@ class MatchesAdapter(
                         crossfade(true)
                         placeholder(R.drawable.img_team_placeholder)
                         fallback(R.drawable.img_team_placeholder)
-                        transformations(CircleCropTransformation())
                         background = null
                     }
 
