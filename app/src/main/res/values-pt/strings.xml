@@ -12,4 +12,7 @@
     <string name="content_team_logo">%1$s logo</string>
     <string name="content_player_image">%1$s foto</string>
     <string name="matches">Partidas</string>
+    <string name="generic_error_message">mensagem de erro genérica</string>
+    <string name="unable_to_get_matches">Não foi possível buscar as partidas, tente novamente.</string>
+    <string name="unable_to_get_players">Não foi possível encontrar os jogadores desse time.</string>
 </resources>

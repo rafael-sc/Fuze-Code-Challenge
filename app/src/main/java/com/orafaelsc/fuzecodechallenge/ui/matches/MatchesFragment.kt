@@ -9,6 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
+import com.orafaelsc.fuzecodechallenge.R
+import com.orafaelsc.fuzecodechallenge.commom.exceptions.ApiException
 import com.orafaelsc.fuzecodechallenge.commom.extensions.setupObserverOnCreated
 import com.orafaelsc.fuzecodechallenge.databinding.FragmentMatchesBinding
 import com.orafaelsc.fuzecodechallenge.di.MatchesModule
@@ -52,7 +55,23 @@ class MatchesFragment : Fragment() {
             setupObserverOnCreated(
                 navigateToDetailsFragment() to ::navigateToDetailsFragmentObserver
             )
+            setupObserverOnCreated(errorState() to ::errorStateObserver)
         }
+    }
+
+    private fun errorStateObserver(exception: Throwable) {
+        val message = if (exception is ApiException.UnableToGetMatchesException) {
+            resources.getString(R.string.unable_to_get_matches)
+        }else{
+            resources.getString(R.string.generic_error_message)
+        }
+        Snackbar.make(
+            requireActivity().findViewById(android.R.id.content),
+            message,
+            Snackbar.LENGTH_INDEFINITE,
+        ).setAction(R.string.general_retry) {
+            viewModel.init()
+        }.show()
     }
 
     private fun navigateToDetailsFragmentObserver(match: Match) {

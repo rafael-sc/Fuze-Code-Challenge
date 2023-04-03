@@ -12,4 +12,7 @@
     <string name="content_team_logo">%1$s logo</string>
     <string name="content_player_image">%1$s photo</string>
     <string name="matches">Matches</string>
+    <string name="generic_error_message">generic error message</string>
+    <string name="unable_to_get_matches">Unnable to get matches, try again.</string>
+    <string name="unable_to_get_players">Unnable to get this team players</string>
 </resources>

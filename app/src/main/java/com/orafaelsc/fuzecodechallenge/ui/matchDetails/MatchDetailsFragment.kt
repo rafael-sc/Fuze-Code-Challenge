@@ -13,7 +13,9 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.google.android.material.snackbar.Snackbar
 import com.orafaelsc.fuzecodechallenge.R
+import com.orafaelsc.fuzecodechallenge.commom.exceptions.ApiException
 import com.orafaelsc.fuzecodechallenge.commom.extensions.setupObserverOnCreated
 import com.orafaelsc.fuzecodechallenge.databinding.FragmentMatchDetailsBinding
 import com.orafaelsc.fuzecodechallenge.di.MatchesModule
@@ -59,7 +61,21 @@ class MatchDetailsFragment : Fragment() {
             setupObserverOnCreated(matchDetails() to ::matchDetailsObserver)
             setupObserverOnCreated(firstTeamPlayers() to ::firsTeamPlayersObserver)
             setupObserverOnCreated(secondTeamPlayers() to ::secondTeamPlayersObserver)
+            setupObserverOnCreated(errorState() to ::errorStateObserver)
         }
+    }
+
+    private fun errorStateObserver(exception: Throwable) {
+        val message = if (exception is ApiException.UnableToGetPlayersException) {
+            resources.getString(R.string.unable_to_get_players)
+        } else {
+            resources.getString(R.string.generic_error_message)
+        }
+        Snackbar.make(
+            requireActivity().findViewById(android.R.id.content),
+            message,
+            Snackbar.LENGTH_INDEFINITE,
+        ).show()
     }
 
     private fun matchDetailsObserver(match: Match) {
